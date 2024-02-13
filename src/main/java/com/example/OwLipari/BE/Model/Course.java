@@ -1,5 +1,6 @@
 package com.example.OwLipari.BE.Model;
 
+import com.example.OwLipari.BE.Model.Enum.CompetenceEnum;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -15,6 +16,8 @@ import java.util.List;
 @Builder
 @Table(name = "course")
 public class Course {
+    //TODO capire se ci vogliono altri campi
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -34,7 +37,17 @@ public class Course {
     )
     private List<Tag> tags;
 
+    @Column(name = "rating")
     private double rating;
+
+    @Column(name = "competence")
+    private CompetenceEnum competence;
+
+    @Column(name = "duration")
+    private double duration;
+
+    @Column(name = "language")
+    private String language;
 
     @Column(name = "corso_url")
     private String url;

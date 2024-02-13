@@ -29,6 +29,7 @@ public class User {
     @Column(nullable = false)
     private String email;
 
+    //TODO da togliere?
     @NotBlank
     @Column(nullable = false)
     private String password;
