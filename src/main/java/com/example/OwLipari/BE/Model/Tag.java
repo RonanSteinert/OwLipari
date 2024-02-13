@@ -16,7 +16,8 @@ import java.util.List;
 @Table(name = "tag")
 public class Tag {
 
-    //TODO capire se servono solo tag o categoria, o entrambi
+    //TODO La tabella course_tag non viene inserito nessun record
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,6 +25,10 @@ public class Tag {
     @NotBlank
     @Column(nullable = false)
     private String name;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
+    private Category category;
 
     @NotBlank
     @Column(columnDefinition = "TEXT")

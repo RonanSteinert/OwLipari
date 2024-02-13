@@ -5,6 +5,6 @@ public enum CompetenceEnum {
 
     MEDIUM,
 
-    EXPERT
+    EXPERT,
 
 }

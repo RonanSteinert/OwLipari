@@ -29,7 +29,7 @@ public class Course {
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(
             name = "course_tag",
             joinColumns = @JoinColumn(name = "course_id"),
@@ -37,10 +37,13 @@ public class Course {
     )
     private List<Tag> tags;
 
-    @Column(name = "rating")
-    private double rating;
+    @OneToMany(mappedBy = "course",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    private List<Rating> ratings;
 
     @Column(name = "competence")
+    @Enumerated(EnumType.STRING)
     private CompetenceEnum competence;
 
     @Column(name = "duration")
@@ -55,7 +58,14 @@ public class Course {
     @Column(name = "image_url")
     private String imageUrl;
 
-    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "course",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
     private List<Enrollment> enrollments;
+
+    @OneToMany(mappedBy = "course",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    private List<Comment> comments;
 
 }

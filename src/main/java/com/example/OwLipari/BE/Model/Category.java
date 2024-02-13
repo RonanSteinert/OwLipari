@@ -29,4 +29,7 @@ public class Category {
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Tag> tags;
+
+    @Column(nullable = false)
+    private int indexHome;
 }

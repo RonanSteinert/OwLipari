@@ -24,21 +24,24 @@ public class User {
     @Column(nullable = false)
     private String name;
 
+    @Column(nullable = false)
+    private String surname;
+
     @NotBlank
     @Email
     @Column(nullable = false)
     private String email;
-
-    //TODO da togliere?
-    @NotBlank
-    @Column(nullable = false)
-    private String password;
 
     @OneToMany(mappedBy = "user",
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
     private List<Enrollment> enrollments;
+
+    @OneToMany(mappedBy = "user",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    private List<Rating> ratings;
 
     @OneToMany(mappedBy = "user",
             cascade = CascadeType.ALL,
