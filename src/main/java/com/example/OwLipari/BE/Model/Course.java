@@ -16,7 +16,7 @@ import java.util.List;
 @Builder
 @Table(name = "course")
 public class Course {
-    //TODO capire se ci vogliono altri campi
+    //TODO capire se ci vogliono altri campi: numero lezioni, numero sezioni
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
